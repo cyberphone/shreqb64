@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+    <context-param>
+        <description>Bouncycastle to be loaded before other providers</description>
+        <param-name>bouncycastle_first</param-name>
+        <param-value>@bouncycastle-first@</param-value>
+    </context-param>
+
+    <context-param>
+        <description>Hash algorithm override</description>
+        <param-name>hash_algorithm</param-name>
+        <param-value>@hash-algorithm@</param-value>
+    </context-param>
+
+    <context-param>
+        <description>Logging flag</description>
+        <param-name>logging</param-name>
+        <param-value>@logging@</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.webpki.webapps.shreqb64.SHREQService</listener-class>
+     </listener>
+
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>org.webpki.webapps.shreqb64.HomeServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CreateServlet</servlet-name>
+        <servlet-class>org.webpki.webapps.shreqb64.CreateServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ValidateServlet</servlet-name>
+        <servlet-class>org.webpki.webapps.shreqb64.ValidateServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CurlServlet</servlet-name>
+        <servlet-class>org.webpki.webapps.shreqb64.CurlServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ExtConfReqServlet</servlet-name>
+        <servlet-class>org.webpki.webapps.shreqb64.ExtConfReqServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ExtConfReq2Servlet</servlet-name>
+        <servlet-class>org.webpki.webapps.shreqb64.ExtConfReq2Servlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>PreConfReqServlet</servlet-name>
+        <servlet-class>org.webpki.webapps.shreqb64.PreConfReqServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>PreConfReq2Servlet</servlet-name>
+        <servlet-class>org.webpki.webapps.shreqb64.PreConfReq2Servlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CreateServlet</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ValidateServlet</servlet-name>
+        <url-pattern>/validate</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CurlServlet</servlet-name>
+        <url-pattern>/curl</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ExtConfReqServlet</servlet-name>
+        <url-pattern>/extconfreq</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ExtConfReqServlet</servlet-name>
+        <url-pattern>/extconfreq/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ExtConfReq2Servlet</servlet-name>
+        <url-pattern>/extconfreq2</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ExtConfReq2Servlet</servlet-name>
+        <url-pattern>/extconfreq2/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PreConfReqServlet</servlet-name>
+        <url-pattern>/preconfreq</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PreConfReqServlet</servlet-name>
+        <url-pattern>/preconfreq/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PreConfReq2Servlet</servlet-name>
+        <url-pattern>/preconfreq2</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PreConfReq2Servlet</servlet-name>
+        <url-pattern>/preconfreq2/*</url-pattern>
+    </servlet-mapping>
+
+    <security-constraint>
+      <web-resource-collection>
+        <web-resource-name>The app</web-resource-name>
+        <url-pattern>/*</url-pattern>
+      </web-resource-collection>
+      <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+      </user-data-constraint>
+    </security-constraint>
+
+</web-app>
