@@ -54,7 +54,10 @@
   </target>
 
   <target name="build">
-    <property name="zip.webpki.lib.dir" value="${webpki.lib.dir}"/>
+    <property name="empty.lib.dir" location="empty.lib"/>
+  <condition property="zip.webpki.lib.dir" value="${webpki.lib.dir}" else="${empty.lib.dir}">
+    <isset property="include.webpki.in.war"/>
+  </condition>
     <property name="zip.bcprovider.lib.dir" value="${bcprovider.lib.dir}"/>
     <mkdir dir="${dist.dir}"/>
     <delete dir="${temp.dir}"/>
