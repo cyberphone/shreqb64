@@ -35,7 +35,7 @@ import org.webpki.jose.JOSESupport;
 import org.webpki.jose.JOSESymKeyHolder;
 import org.webpki.shreqb64.SHREQSupport;
 import org.webpki.util.Base64;
-import org.webpki.util.DebugFormatter;
+import org.webpki.util.HexaDecimal;
 import org.webpki.util.ISODateTime;
 import org.webpki.util.PEMDecoder;
 import org.webpki.util.ArrayUtil;
@@ -100,7 +100,7 @@ public class TestVectors {
                 String keyInHex = utf8(readKey(keyAlgName + "bitkey.hex"));
                 keyInRFCText = keyInHex;
                 keyRFCDescription = "Symmetric signature validation key, here in hexadecimal notation:";
-                keyHolder = new JOSESymKeyHolder(DebugFormatter.getByteArrayFromHex(keyInHex));
+                keyHolder = new JOSESymKeyHolder(HexaDecimal.decode(keyInHex));
             } else {
                 KeyPair keyPair = PEMDecoder.getKeyPair(readKey(keyAlgName + "privatekey.pem"));
                 keyRFCDescription = "Public signature validation key, here in PEM format:";

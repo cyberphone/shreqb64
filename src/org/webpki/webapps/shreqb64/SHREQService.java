@@ -36,7 +36,7 @@ import org.webpki.crypto.MACAlgorithms;
 import org.webpki.crypto.SignatureAlgorithms;
 import org.webpki.shreqb64.SHREQSupport;
 import org.webpki.util.ArrayUtil;
-import org.webpki.util.DebugFormatter;
+import org.webpki.util.HexaDecimal;
 import org.webpki.util.PEMDecoder;
 import org.webpki.webutil.InitPropertyReader;
 
@@ -89,7 +89,7 @@ public class SHREQService extends InitPropertyReader implements ServletContextLi
                 }
             } else if (name.equals(SECRET_KEYS)) {
                 predefinedSecretKeys.put(algId, 
-    DebugFormatter.getByteArrayFromHex(getEmbeddedResourceString(fileOrNull + base).trim()));
+    HexaDecimal.decode(getEmbeddedResourceString(fileOrNull + base).trim()));
             }
             if (fileOrNull == null) {
                 after.append(name)

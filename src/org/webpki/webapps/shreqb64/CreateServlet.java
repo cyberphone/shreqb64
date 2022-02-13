@@ -37,7 +37,7 @@ import org.webpki.json.JSONObjectWriter;
 import org.webpki.json.JSONOutputFormats;
 import org.webpki.json.JSONParser;
 import org.webpki.shreqb64.SHREQSupport;
-import org.webpki.util.DebugFormatter;
+import org.webpki.util.HexaDecimal;
 import org.webpki.util.PEMDecoder;
 
 public class CreateServlet extends BaseGuiServlet {
@@ -326,7 +326,7 @@ public class CreateServlet extends BaseGuiServlet {
             // Symmetric or asymmetric?
             if (algorithm.isSymmetric()) {
                 validationKey = getParameter(request, TXT_SECRET_KEY);
-                keyHolder = new JOSESymKeyHolder(DebugFormatter.getByteArrayFromHex(validationKey));
+                keyHolder = new JOSESymKeyHolder(HexaDecimal.decode(validationKey));
             } else {
                 // To simplify UI we require PKCS #8 with the public key embedded
                 // but we also support JWK which also has the public key
